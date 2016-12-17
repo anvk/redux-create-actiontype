@@ -39,8 +39,8 @@ const types = createActionTypes('my app')(
   'login',
   'logout',
   createActionTypes('users')(
-    { fetch: { api: true } },
-    { dialog: { postfixes: ['open', 'close' ]}},
+    { 'fetch': { api: true } },
+    { 'dialog': { postfixes: ['open', 'close' ]}},
     'send email',
     'eat borscht'
   )
