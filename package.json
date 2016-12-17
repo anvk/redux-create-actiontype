@@ -1,0 +1,55 @@
+{
+  "name": "redux-create-actiontype",
+  "version": "0.1.0",
+  "author": "anvk",
+  "main": "dist/redux-create-actiontype.js",
+  "description": "Micro library for easy Action Types generation in Redux/React.",
+  "contributors": [
+    {
+      "name": "Alexey Novak",
+      "email": "alexey.novak.mail@gmail.com"
+    }
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "build:source": "rimraf dist/ && babel src/ --out-dir dist/",
+    "build:tests": "rimraf test-dist/ && babel test/ --out-dir test-dist/",
+    "clean": "rimraf dist/ && rimraf test-dist/",
+    "build": "npm run build:source && npm run build:tests",
+    "test": "node node_modules/mocha/bin/mocha --reporter spec test-dist/*"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anvk/redux-create-actiontype.git"
+  },
+  "keywords": [
+    "constant",
+    "action type",
+    "redux",
+    "react",
+    "create",
+    "react",
+    "action",
+    "type"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "5.6.5",
+    "babel-eslint": "5.0.0",
+    "chai": "3.0.0",
+    "eslint": "2.2.0",
+    "eslint-config-airbnb": "6.0.2",
+    "mocha": "2.2.5",
+    "rimraf": "2.5.2"
+  },
+  "engine": "node >= 0.10.x",
+  "homepage": "https://github.com/anvk/redux-create-actiontype",
+  "bugs": {
+    "url": "https://github.com/anvk/redux-create-actiontype/issues"
+  },
+  "private": false,
+  "license": "MIT"
+}
