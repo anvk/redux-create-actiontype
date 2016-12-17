@@ -42,15 +42,13 @@ function normalizeString(str) {
   type = prefix && prefix.length > 0 ? '' + prefix + separator + type : type;
 
   return type;
-};
+}
 
 function createActionTypes() {
   var userOptions = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
   var options = typeof userOptions === 'string' ? _extends({}, defaultOptions, { prefix: userOptions }) : _extends({}, defaultOptions, userOptions);
 
-  var prefix = options.prefix;
-  var separator = options.separator;
   var upperCase = options.upperCase;
   var _options$apiPostfixes = options.apiPostfixes;
   var apiPostfixes = _options$apiPostfixes === undefined ? defaultAPIPostfixes : _options$apiPostfixes;
@@ -62,9 +60,7 @@ function createActionTypes() {
 
     return args.reduce(function (result, argument) {
       if (typeof argument !== 'string' && typeof argument !== 'object') {
-        console.log(argument);
         throw 'Redux Create ActionType: -> Action Type has to be a string or an object';
-        return;
       }
 
       var newActionType = undefined;
@@ -79,7 +75,6 @@ function createActionTypes() {
       // no empty objects are allowed
       if (!Object.keys(argument).length) {
         throw 'Redux Create ActionType: -> Action Type cannot be an empty object';
-        return;
       }
 
       // get the first key
@@ -109,8 +104,8 @@ function createActionTypes() {
 
       newActionType = normalizeString(key, options);
       var newActionTypes = postfixes.reduce(function (subResult, postfix) {
-        postfix = upperCase ? postfix.toUpperCase() : postfix;
-        return _extends({}, subResult, _defineProperty({}, '' + newActionType + UNDERSCORE + postfix, '' + newActionType + UNDERSCORE + postfix));
+        var _postfix = upperCase ? postfix.toUpperCase() : postfix;
+        return _extends({}, subResult, _defineProperty({}, '' + newActionType + UNDERSCORE + _postfix, '' + newActionType + UNDERSCORE + _postfix));
       }, {});
 
       return _extends({}, result, newActionTypes);

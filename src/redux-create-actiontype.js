@@ -30,7 +30,7 @@ function normalizeString(str, options = {}) {
     : type;
 
   return type;
-};
+}
 
 export default function createActionTypes(userOptions = {}) {
   const options = (typeof userOptions === 'string')
@@ -38,8 +38,6 @@ export default function createActionTypes(userOptions = {}) {
     : { ...defaultOptions, ...userOptions };
 
   const {
-    prefix,
-    separator,
     upperCase,
     apiPostfixes = defaultAPIPostfixes
   } = options;
@@ -47,9 +45,7 @@ export default function createActionTypes(userOptions = {}) {
   return function(...args) {
     return args.reduce((result, argument) => {
       if (typeof argument !== 'string' && typeof argument !== 'object') {
-        console.log(argument);
         throw 'Redux Create ActionType: -> Action Type has to be a string or an object';
-        return;
       }
 
       let newActionType;
@@ -64,7 +60,6 @@ export default function createActionTypes(userOptions = {}) {
       // no empty objects are allowed
       if (!Object.keys(argument).length) {
         throw 'Redux Create ActionType: -> Action Type cannot be an empty object';
-        return;
       }
 
       // get the first key
@@ -89,10 +84,10 @@ export default function createActionTypes(userOptions = {}) {
 
       newActionType = normalizeString(key, options);
       const newActionTypes = postfixes.reduce((subResult, postfix) => {
-        postfix = upperCase ? postfix.toUpperCase() : postfix;
+        const _postfix = upperCase ? postfix.toUpperCase() : postfix;
         return {
           ...subResult,
-          [`${newActionType}${UNDERSCORE}${postfix}`]: `${newActionType}${UNDERSCORE}${postfix}`
+          [`${newActionType}${UNDERSCORE}${_postfix}`]: `${newActionType}${UNDERSCORE}${_postfix}`
         };
       }, {});
 
