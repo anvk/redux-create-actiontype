@@ -12,7 +12,7 @@ $ npm install redux-create-actiontype --save
 
 ### Basic Usage
 
-Basic list of constant action types
+Create a basic object with Action Types:
 
 ```js
 import createActionTypes from 'redux-create-actiotype';
@@ -32,7 +32,7 @@ const types = {
 */
 ```
 
-More close to real life example
+An example which is closer to a a real world project:
 
 ```js
 const types = createActionTypes('my app')(
@@ -61,9 +61,9 @@ const types = {
 */
 ```
 
-### More Advanced Usage
+### Advanced Usage:
 
-Default API Action Types
+Generating API Action Types
 
 ```js
 const types = createActionTypes('my app')(
@@ -83,7 +83,7 @@ const types = {
 */
 ```
 
-Set API postfixes for each type
+Pre-define custom API postfixes
 
 ```js
 const types = createActionTypes({
@@ -108,7 +108,7 @@ const types = {
 */
 ```
 
-Custom postfixes
+Custom postfixes for a custom Action Type
 
 ```js
 const types = createActionTypes('my app')(
@@ -127,7 +127,7 @@ const types = {
 */
 ```
 
-Set non-uppercase prefixes with /
+(support for another style) Set a lower-case prefix with / as a separator
 
 ```js
 const types = createActionTypes({
@@ -149,12 +149,14 @@ const types = {
 
 #### Options
 
-`const types = createActionTypes({
+```js
+const types = createActionTypes({
   prefix,     // string prefix for all elements in array of types. default is ''
   separator,  // string character which is separates prefix and each element type. default is '_'
   upperCase,  // bool. it will set to upper case each key if set to true. default is true
   prefixUpperCase // bool. it will set to upper case the prefix if set to true. default is true
-})(arrayOfTypes);`
+})(arrayOfTypes);
+```
 
 #### Default API Postfixes
 
@@ -166,12 +168,11 @@ const defaultAPIPostfixes = [
 ];
 ```
 
-
 ## Full list of examples
-You can find various examples in my [tests file](./test/redux-create-actiontype-test.js)
+You can find more examples in my [test file.](./test/redux-create-actiontype-test.js)
 
 ## Feedback
-For any ideas, suggestion or bugs feel free to nudge me [here](https://github.com/anvk/redux-create-actiontype/issues)
+For any ideas, suggestion or bugs feel free to ping me or create a ticket [right here.](https://github.com/anvk/redux-create-actiontype/issues)
 
 ## License
 
