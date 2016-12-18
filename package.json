@@ -1,6 +1,6 @@
 {
   "name": "redux-create-actiontype",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "anvk",
   "main": "dist/redux-create-actiontype.js",
   "description": "Micro library for easy Action Types generation in Redux/React.",

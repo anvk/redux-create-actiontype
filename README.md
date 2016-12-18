@@ -20,14 +20,16 @@ import createActionTypes from 'redux-create-actiotype';
 const types = createActionTypes()(
   'login',
   'logout',
-  'is fetching'
+  'is fetching',
+  'CREATE_ACTION'
 );
 
 /* it is going to generate
 const types = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
-  IS_FETCHING: 'IS_FETCHING'
+  IS_FETCHING: 'IS_FETCHING',
+  CREATE_ACTION: 'CREATE_ACTION'
 };
 */
 ```
@@ -125,6 +127,17 @@ const types = {
   MY_APP_DIALOG_CLOSE: 'MY_APP_DIALOG_CLOSE'
 };
 */
+
+// OR
+// the following code yields the same results
+const types = createActionTypes('my app')(
+  'login',
+  'logout',
+  createActionTypes('dialog')(
+    'open',
+    'close'
+  )
+);
 ```
 
 (support for another style) Set a lower-case prefix with / as a separator
@@ -143,6 +156,34 @@ const types = createActionTypes({
 const types = {
   'my_app/LOGIN': 'my_app/LOGIN',
   'my_app/LOGOUT': 'my_app/LOGOUT'
+};
+*/
+```
+
+deep structured actions
+
+```js
+const types = createActionTypes('my app')(
+  'login',
+  'logout',
+  createActionTypes('dialog')(
+    'open',
+    'close',
+    createActionTypes('input')(
+      'change',
+      'on focus'
+    )
+  )
+);
+
+/* it is going to generate
+const types = {
+  MY_APP_LOGIN: 'MY_APP_LOGIN',
+  MY_APP_LOGOUT: 'MY_APP_LOGOUT',
+  MY_APP_DIALOG_OPEN: 'MY_APP_DIALOG_OPEN',
+  MY_APP_DIALOG_CLOSE: 'MY_APP_DIALOG_CLOSE',
+  MY_APP_DIALOG_INPUT_CHANGE: 'MY_APP_DIALOG_INPUT_CHANGE',
+  MY_APP_DIALOG_INPUT_ON_FOCUS: 'MY_APP_DIALOG_INPUT_ON_FOCUS'
 };
 */
 ```
