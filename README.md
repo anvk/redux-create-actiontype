@@ -15,13 +15,14 @@ $ npm install redux-create-actiontype --save
 Create a basic object with Action Types:
 
 ```js
-import createActionTypes from 'redux-create-actiotype';
+import createActionTypes from 'redux-create-actiontype';
 
 const types = createActionTypes()(
-  'login',
-  'logout',
-  'is fetching',
-  'CREATE_ACTION'
+  'LOGIN',
+  'LOGOUT',
+  'IS_FETCHING',
+  'CREATE_ACTION',
+  { 'USER': { api: true } }
 );
 
 /* it is going to generate
@@ -29,12 +30,15 @@ const types = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
   IS_FETCHING: 'IS_FETCHING',
-  CREATE_ACTION: 'CREATE_ACTION'
+  CREATE_ACTION: 'CREATE_ACTION',
+  USER_FETCHING: 'USER_FETCHING',
+  USER_SUCCESS: 'USER_SUCCESS',
+  USER_ERROR: 'USER_ERROR'
 };
 */
 ```
 
-An example which is closer to a a real world project:
+A nested example which is closer to a real world project:
 
 ```js
 const types = createActionTypes('my app')(
@@ -52,7 +56,7 @@ const types = createActionTypes('my app')(
 const types = {
   MY_APP_LOGIN: 'MY_APP_LOGIN',
   MY_APP_LOGOUT: 'MY_APP_LOGOUT',
-  MY_APP_USERS_FETCH_LOADING: 'MY_APP_USERS_FETCH_LOADING',
+  MY_APP_USERS_FETCH_FETCHING: 'MY_APP_USERS_FETCH_FETCHING',
   MY_APP_USERS_FETCH_SUCCESS: 'MY_APP_USERS_FETCH_SUCCESS',
   MY_APP_USERS_FETCH_ERROR: 'MY_APP_USERS_FETCH_ERROR',
   MY_APP_USERS_DIALOG_OPEN: 'MY_APP_USERS_DIALOG_OPEN',
@@ -78,7 +82,7 @@ const types = createActionTypes('my app')(
 const types = {
   MY_APP_LOGIN: 'MY_APP_LOGIN',
   MY_APP_LOGOUT: 'MY_APP_LOGOUT',
-  MY_APP_USER_LOADING: 'MY_APP_USER_LOADING',
+  MY_APP_USER_FETCHING: 'MY_APP_USER_FETCHING',
   MY_APP_USER_SUCCESS: 'MY_APP_USER_SUCCESS',
   MY_APP_USER_ERROR: 'MY_APP_USER_ERROR',
 };
@@ -203,7 +207,7 @@ const types = createActionTypes({
 
 ```js
 const defaultAPIPostfixes = [
-  'LOADING',
+  'FETCHING',
   'ERROR',
   'SUCCESS'
 ];

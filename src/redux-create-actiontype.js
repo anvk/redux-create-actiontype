@@ -11,7 +11,7 @@ const defaultOptions = {
 };
 
 const defaultAPIPostfixes = [
-  'LOADING',
+  'FETCHING',
   'ERROR',
   'SUCCESS'
 ];
