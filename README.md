@@ -15,7 +15,7 @@ $ npm install redux-create-actiontype --save
 Create a basic object with Action Types:
 
 ```js
-import createActionTypes from 'redux-create-actiotype';
+import createActionTypes from 'redux-create-actiontype';
 
 const types = createActionTypes()(
   'login',
